@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO GOOD X - AI Incubator FAQ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+            color: #e6e6e6;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #64b3f4, #c2e59c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #a8b2d1;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        .meta-item strong {
+            color: #64b3f4;
+        }
+
+        .faq-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #e6e6e6;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #64b3f4, #c2e59c);
+            border-radius: 3px;
+        }
+
+        .faq-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e6e6e6;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #64b3f4;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            color: #a8b2d1;
+            line-height: 1.7;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            padding-top: 15px;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: #64b3f4;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .highlight {
+            background: rgba(100, 179, 244, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #64b3f4;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #64b3f4, #c2e59c);
+            color: #0a192f;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #8892b0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .faq-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .wide-section {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>DO GOOD X's AI Incubator</h1>
+            <p>Building the Future Responsibly. Join us at our upcoming webinar to learn more—register today to secure your spot!</p>
+            
+            <div class="meta-info">
+                <div class="meta-item"><strong>Last Updated:</strong> October 30, 2025</div>
+                <div class="meta-item"><strong>Program Start:</strong> March 9, 2026</div>
+                <div class="meta-item"><strong>For:</strong> Prospective participants</div>
+            </div>
+        </section>
+
+        <div class="faq-container">
+            <!-- GETTING INVOLVED -->
+            <section class="faq-section">
+                <h2 class="section-title">Getting Involved</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I get involved with the AI Incubator?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        There are several ways to get involved with DO GOOD X's AI Incubator:
+                        <ul>
+                            <li><strong>Apply as a Participant:</strong> Join our 8-week intensive program to build your AI-first business</li>
+                            <li><strong>Attend our Webinar:</strong> Learn more about the program and meet the facilitators</li>
+                            <li><strong>Become a Mentor:</strong> Share your expertise with our cohort of social entrepreneurs</li>
+                            <li><strong>Partner with Us:</strong> Help us expand our impact through strategic partnerships</li>
+                            <li><strong>Stay Informed:</strong> Sign up for updates about future programs and events</li>
+                        </ul>
+                        The best way to start is by attending our information webinar or reaching out to our team at hello@dogoodx.org.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is this program?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        An <span class="highlight">8-week intensive program</span> that teaches founders, small business owners, and creatives how to build AI-first businesses using rapid validation, ethical development practices, and strategic frameworks proven in venture capital.
+                        <br><br>
+                        You'll take one idea from problem validation to functioning MVP with real customer traction, while learning the skills to become a serial founder in the AI era.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Who is this program for?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Three primary archetypes:
+                        <ul>
+                            <li><span class="badge">Evening Entrepreneurs</span> People with day jobs who want to build a business on the side with structure and accountability</li>
+                            <li><span class="badge">Purpose-Driven Builders</span> Social impact founders who want to leverage AI responsibly to 10x their mission</li>
+                            <li><span class="badge">Small Business Owners/Creatives</span> People with existing traction who want to use AI to scale without hiring huge teams</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Who is this NOT for?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>People without a specific problem they're trying to solve</li>
+                            <li>People who can't commit 3+ hours per week for 8 weeks</li>
+                            <li>People who aren't in a financial position to invest $900</li>
+                            <li>People looking to build hardware products requiring manufacturing</li>
+                            <li>People who view AI ethics as optional or a hindrance</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LOGISTICS -->
+            <section class="faq-section">
+                <h2 class="section-title">Logistics</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When does the program run?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>Start Date:</strong> March 9, 2026</li>
+                            <li><strong>End Date:</strong> April 27, 2026</li>
+                            <li><strong>Duration:</strong> 8 weeks</li>
+                            <li><strong>Sessions:</strong> 2 per week, 90 minutes each (16 total sessions)</li>
+                            <li><strong>Time:</strong> March to April 2026, Evenings</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is this in-person or virtual?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>100% virtual.</strong> All sessions are conducted via Zoom.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I miss a session?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        All sessions are recorded and you'll have access to recordings. However, the real value is in attending live for real-time feedback, collaboration, and network building.
+                        <br><br>
+                        Missing 1-2 sessions due to travel or emergencies is understandable. Missing more than that means you won't get the full value of the cohort experience.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I join from outside the US?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The program is virtual, so technically yes. However, sessions will be scheduled for the Eastern Time Zone. If you're in a drastically different timezone where sessions would be at 3 AM, consider whether that's sustainable for 8 weeks.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's the cohort size?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Maximum:</strong> 15 participants (to maintain quality and cohort dynamics)
+                    </div>
+                </div>
+            </section>
+
+            <!-- CURRICULUM & CONTENT -->
+            <section class="faq-section wide-section">
+                <h2 class="section-title">Curriculum & Content</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What will I actually learn?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><span class="badge">Week 1</span> AI-powered market intelligence and competitive analysis</li>
+                            <li><span class="badge">Week 2</span> Rapid MVP development and ethical AI integration</li>
+                            <li><span class="badge">Week 3</span> Beta testing and market validation frameworks</li>
+                            <li><span class="badge">Week 4</span> AI-first organizational leadership</li>
+                            <li><span class="badge">Week 5</span> Business model innovation and financial strategy</li>
+                            <li><span class="badge">Week 6</span> Strategic network architecture and cap table design</li>
+                            <li><span class="badge">Week 7</span> Data-driven growth and scale strategy</li>
+                            <li><span class="badge">Week 8</span> Strategic launch and market positioning</li>
+                            <li><span class="badge">Capstone</span> Showcase with investors and strategic partners</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's the teaching methodology?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>Problem-first, tool-second approach:</strong> Focus on solving real problems, not just learning tools</li>
+                            <li><strong>Experimental framework:</strong> You're a scientist running tests, not an entrepreneur guessing</li>
+                            <li><strong>Hands-on application:</strong> You build and test your actual business throughout the program</li>
+                            <li><strong>Cohort-based learning:</strong> Learn from peers, give and receive feedback, build your network</li>
+                            <li><strong>Expert facilitation:</strong> Direct access to Keyona's VC experience and global insights</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What AI tools will we learn?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We focus on principles and frameworks that work across tools, not specific tool training. However, you'll be exposed to:
+                        <ul>
+                            <li>SLMs & LLMs (like ChatGPT, Claude, Gemini)</li>
+                            <li>No-code development platforms (Lovable, Bolt, Cursor)</li>
+                            <li>Data analysis and market research tools</li>
+                            <li>Automation and workflow tools</li>
+                            <li>Local and open-source model options</li>
+                        </ul>
+                        The specific tools matter less than understanding when and how to use different categories of tools.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to pay for AI tool subscriptions?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>No.</strong> AI tool stipends are included in your tuition. You'll receive credits or access to necessary tools.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Will there be homework?
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Yes.</strong> Each week you'll have assignments:
+                        <ul>
+                            <li>Customer interviews</li>
+                            <li>Building/testing your MVP</li>
+                            <li>Market research exercises</li>
+                            <li>Reading/preparation for next session</li>
+                            <li>Peer feedback on cohort members' work</li>
+                        </ul>
+                        Budget approximately 3-5 hours per week outside of the 90-minute sessions.
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Add more sections as needed -->
+            
+        </div>
+
+        <footer>
+            <p>DO GOOD X AI Incubator • Last Updated: October 30, 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
